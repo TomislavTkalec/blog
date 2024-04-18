@@ -18,12 +18,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
+        /* User::truncate();
         Category::truncate();
-        Post::truncate();
+        Post::truncate(); */
+
+        $user = User::factory()->create([
+            'name' => 'Tomislav Tkalec'
+        ]);
+
+        Post::factory(5)->create([
+            'user_id' => $user->id
+        ]);
+        //Category::factory()->create();
 
         //$user = \App\Models\User::factory(10)->create();
-        $user = User::factory()->create();
+        /*$user = User::factory()->create();
 
         $personal = Category::create([
             'name' => 'Personal',
@@ -56,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'my-work-post',
             'excerpt' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
             'body' => "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-        ]);
+        ]);*/
 
     }
 }
